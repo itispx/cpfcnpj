@@ -14,7 +14,7 @@ go get github.com/itispx/cpfcnpj
 
 # General Validation
 
-If you need to validate either CPF or CNPJ without knowing beforehand which one it is, use the `Validate()` function in the main package. This function automatically detects and validates CPF or CNPJ based on the length of the input.
+If you need to validate either CPF or CNPJ without knowing beforehand which one it is, use the `Validate()` function in the main package. This function automatically detects and validates CPF or CNPJ based on the length of the input and returns a boolean indicating validity along with a string specifying the document type ("cpf" or "cnpj").
 
 ```go
 package main
@@ -26,8 +26,8 @@ import (
 
 func main() {
 	document := "12.345.678/0001-95" // Can be CPF or CNPJ
-	isValid := cpfcnpj.Validate(document)
-	fmt.Printf("Is document valid? %v\n", isValid)
+	isValid, docType := cpfcnpj.Validate(document)
+	fmt.Printf("Is document valid? %v, Document type: %s\n", isValid, docType)
 }
 ```
 
